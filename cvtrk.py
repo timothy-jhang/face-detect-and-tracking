@@ -1,3 +1,4 @@
+# based on the track in opencv_contrib : opencv_contrib/modules/tracking/samples/tracker.py
 import cv2
 import sys
 (major_ver,minor_ver,subminor_ver)=(cv2.__version__).split('.')
