@@ -46,10 +46,16 @@ if __name__ == '__main__' :
     #bbox = cv2.selectROI(frame, False)
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') 
     faces = face_cascade.detectMultiScale(frame, 1.3, 5)
-    print('type of faces = ', type(faces))
-    if faces is None:
-	print('faces is NULL')
-    print(faces[0])
+    no_faces = len(faces)
+    print('no faces = ', no_faces)
+    # search tru frames until it finds a face
+    while no_faces < 1:
+        ok, frame = video.read()
+        faces = face_cascade.detectMultiScale(frame, 1.3, 5)
+        no_faces = len(faces)
+        print('no faces = ', no_faces)
+	
+    # track only the first face - sinle tracker 
     bbox = tuple(faces[0])
 
     # Initialize tracker with first frame and bounding box
